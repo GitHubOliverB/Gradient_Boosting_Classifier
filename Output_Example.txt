@@ -1,0 +1,253 @@
+Starting to Import Data...
+
+Defining Signal_List Data...
+Defined Gaussian_Signal As Signal_List Type
+Defined 1 Signal_List Type/s
+
+Data was successfully specified...
+
+Defining Background_List Data...
+Defined Gaussian_Bg_1 As Background_List Type
+Defined Gaussian_Bg_2 As Background_List Type
+Defined Gaussian_Bg_3 As Background_List Type
+Defined Gaussian_Bg_4 As Background_List Type
+Defined 4 Background_List Type/s
+
+Data was successfully specified...
+
+Finished Defining Data
+------------------------------------------------------------------------------------------------------------------------------
+Specifying Features...
+
+Defining Feature_List Data...
+Features were successfully specified...
+Feature 0: X
+Feature 1: Y
+
+Defined 2 Feature/s
+
+Finished Defining Features
+------------------------------------------------------------------------------------------------------------------------------
+Loading in Signal Data: 1 File/s
+
+Gaussian_Signal Found: 100,000 Events
+
+Finished Loading Signal Data
+------------------------------------------------------------------------------------------------------------------------------
+Loading in Background Data: 4 File/s
+
+Gaussian_Bg_1 Found: 100,000 Events
+Gaussian_Bg_2 Found: 100,000 Events
+Gaussian_Bg_3 Found: 100,000 Events
+Gaussian_Bg_4 Found: 100,000 Events
+
+Finished Loading Background Data
+
+Data Loading Completed
+------------------------------------------------------------------------------------------------------------------------------
+Number Of Events To Work With
+Total Signal Events: 100,000
+Total Background Events: 400,000
+------------------------------------------------------------------------------------------------------------------------------
+Start To Create Plots
+
+Boxplot...
+
+Correlation Matrix For Signal...
+
+Correlation Matrix For Background...
+
+Finished All Plots
+------------------------------------------------------------------------------------------------------------------------------
+Splitting Data for Training and Testing...
+
+Reserving 20.00% Of Events For Later Use: 100,000
+
+Using 80.00% Of Events For Splitting: 400,000
+
+Using 40.00% Of Events For Training: 200,000
+
+Using 40.00% Of Events For Testing: 200,000
+
+Data Has Been Split...
+------------------------------------------------------------------------------------------------------------------------------
+GradientBoostingClassifier(criterion='friedman_mse', init=None,
+                           learning_rate=0.1, loss='deviance', max_depth=3,
+                           max_features=None, max_leaf_nodes=None,
+                           min_impurity_decrease=0.0, min_impurity_split=None,
+                           min_samples_leaf=0.1, min_samples_split=2,
+                           min_weight_fraction_leaf=0.0, n_estimators=500,
+                           n_iter_no_change=None, presort='auto',
+                           random_state=0, subsample=0.8, tol=0.0001,
+                           validation_fraction=0.1, verbose=True,
+                           warm_start=False)
+Setting Classifier and Parameters...
+
+Initializing Crosstraining...
+
+Crosstraining - 0
+      Iter       Train Loss      OOB Improve   Remaining Time
+         1           0.9156           0.0858           38.12s
+         2           0.8572           0.0596           38.29s
+         3           0.7885           0.0679           37.88s
+         4           0.7436           0.0433           37.76s
+         5           0.6943           0.0473           37.76s
+         6           0.6686           0.0271           38.22s
+         7           0.6339           0.0345           37.90s
+         8           0.6034           0.0292           37.70s
+         9           0.5847           0.0182           37.45s
+        10           0.5622           0.0233           37.11s
+        20           0.4439           0.0075           35.97s
+        30           0.3859           0.0044           35.89s
+        40           0.3556           0.0016           34.84s
+        50           0.3421           0.0012           33.88s
+        60           0.3303           0.0009           33.17s
+        70           0.3258           0.0005           32.60s
+        80           0.3214           0.0002           31.90s
+        90           0.3202           0.0005           30.93s
+       100           0.3145           0.0003           29.95s
+       200           0.3045          -0.0000           22.03s
+       300           0.3008           0.0000           14.49s
+       400           0.2986          -0.0000            7.23s
+       500           0.2985           0.0000            0.00s
+Decision Trees can be saved as a PNG if wanted. Change Input to True.
+
+Feature Ranking By Variable Importance
+
+Rank    Variable                Variable Importance (+/- STD)
+---------------------------------------------------------------
+   1    Y                       0.5901 +/- 0.2349
+   2    X                       0.4099 +/- 0.2349
+
+Classification For Crosstraining - 0:
+              precision    recall  f1-score   support
+
+  background       0.96      0.96      0.96    159989
+      signal       0.86      0.85      0.85     40011
+
+    accuracy                           0.94    200000
+   macro avg       0.91      0.91      0.91    200000
+weighted avg       0.94      0.94      0.94    200000
+
+Confusion Matrix on Testing Set:
+[[154266   5723]
+ [  6086  33925]]
+
+Area under ROC curve: 0.9767
+Area under PR curve:  0.9113
+
+Over/Underfitting Test:
+
+Testing signal efficiency compared to (training signal efficiency)
+
+@B=0.01                 @B=0.10                 @B=0.30
+-------------------------------------------------------------------------
+0.595 (0.604)           0.949 (0.951)           0.99 (0.991)
+
+Comparing BDT Output Distribution for Training and Testing Set
+
+                Signal                  Background
+-------------------------------------------------------------------------
+KS p-value      0.084                   0.523
+
+Based on the p-value of the Kolmogorov-Smirnov Test...
+there seems to be no Over/Undertraining present for the Signal-Distribustions.
+
+there seems to be no Over/Undertraining present for the Background-Distribustions.
+------------------------------------------------------------------------------------------------------------------------------
+Crosstraining - 1
+      Iter       Train Loss      OOB Improve   Remaining Time
+         1           0.9146           0.0861           36.86s
+         2           0.8529           0.0637           36.55s
+         3           0.7854           0.0659           35.99s
+         4           0.7460           0.0393           35.85s
+         5           0.6991           0.0474           35.55s
+         6           0.6718           0.0281           35.57s
+         7           0.6361           0.0348           35.42s
+         8           0.6089           0.0294           35.29s
+         9           0.5879           0.0183           35.31s
+        10           0.5639           0.0231           35.22s
+        20           0.4489           0.0083           34.60s
+        30           0.3906           0.0044           33.93s
+        40           0.3604           0.0018           33.60s
+        50           0.3460           0.0008           32.74s
+        60           0.3359           0.0006           31.94s
+        70           0.3299           0.0004           31.66s
+        80           0.3245           0.0003           30.83s
+        90           0.3233           0.0001           30.06s
+       100           0.3215           0.0003           29.29s
+       200           0.3091           0.0000           21.74s
+       300           0.3030           0.0000           14.38s
+       400           0.3031           0.0000            7.17s
+       500           0.2999          -0.0000            0.00s
+Decision Trees can be saved as a PNG if wanted. Change Input to True.
+
+Feature Ranking By Variable Importance
+
+Rank    Variable                Variable Importance (+/- STD)
+---------------------------------------------------------------
+   1    Y                       0.5885 +/- 0.2404
+   2    X                       0.4115 +/- 0.2404
+
+Classification For Crosstraining - 1:
+              precision    recall  f1-score   support
+
+  background       0.96      0.97      0.96    160041
+      signal       0.86      0.85      0.85     39959
+
+    accuracy                           0.94    200000
+   macro avg       0.91      0.91      0.91    200000
+weighted avg       0.94      0.94      0.94    200000
+
+Confusion Matrix on Training Set:
+[[154527   5514]
+ [  6031  33928]]
+
+Area under ROC curve: 0.9772
+Area under PR curve:  0.9115
+
+Over/Underfitting Test:
+
+Testing signal efficiency compared to (training signal efficiency)
+
+@B=0.01                 @B=0.10                 @B=0.30
+-------------------------------------------------------------------------
+0.6 (0.6)               0.95 (0.95)             0.991 (0.991)
+
+Comparing BDT Output Distribution for Training and Testing Set
+
+                Signal                  Background
+-------------------------------------------------------------------------
+KS p-value      0.595                   0.703
+
+Based on the p-value of the Kolmogorov-Smirnov Test...
+there seems to be no Over/Undertraining present for the Signal-Distribustions.
+
+there seems to be no Over/Undertraining present for the Background-Distribustions.
+
+Finished Training...
+------------------------------------------------------------------------------------------------------------------------------
+Plotting Validation For Number Of Trees...
+Highest ROC-AUC At Tree: 500
+Highest PR-AUC At Tree: 500
+Plotting Performance vs. Size Of Training Set...
+[learning_curve] Training set sizes: [ 36000  72000 108000 144000 180000 216000 252000 288000 324000 360000]
+[Parallel(n_jobs=7)]: Using backend LokyBackend with 7 concurrent workers.
+[Parallel(n_jobs=7)]: Done 100 out of 100 | elapsed: 26.7min finished
+
+Finished Validation...
+------------------------------------------------------------------------------------------------------------------------------
+
+Finish things up here with some nice plots for you to look at :).
+Generating Grid...
+Getting Predictions For Gridspace..
+Creating The Plot..
+Generating Grid...
+Getting Predictions For Gridspace..
+Creating The Plot..
+Generating Grid...
+Getting Predictions For Gridspace..
+Creating The Plot..
+Generating Grid...
+Getting Predictions For Gridspace..
+Creating The Plot..
