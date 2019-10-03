@@ -15,7 +15,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/GitHubOliverB/Gradient_Boosting_Classifier">
-    <img src="GBT_Classifier_Example\Plots\Visualization\GBT_Classifier_Crosstraining_0_Visualization_Signal_Probabilty_XY_Background_No_Data.png" alt="Logo" width="80" height="80">
+    <img src="GBT_Classifier_Example\Plots\Visualization\GBT_Classifier_Crosstraining_0_Visualization_Signal_Probabilty_XY_Background_No_Data.png" alt="Logo" width="360" height="360">
   </a>
   <h3 align="center">A Gradient-Boosting-Classifier Example In Python</h3>
   <p align="center">
@@ -47,7 +47,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][Tree-screenshot]]
+![alt text](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/blob/master/GBT_Classifier_Example/Plots/Decision_Trees/GBT_Classifier_Example_0_Decision_Tree_0.png)
 
 There are many Gradient-Boosting-Classifier templates available on GitHub, however, 
 I didn't find one that needs heavy editing or was automated enough for an easy use.
@@ -145,4 +145,3 @@ Oliver Bey - oliver.bey91@gmail.com
 [license-url]: 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/oliver-bey-2b148918b/
-[Tree-screenshot]: GBT_Classifier_Example\Plots\Decision_Trees\GBT_Classifier_Example_0_Decision_Tree_0.png
