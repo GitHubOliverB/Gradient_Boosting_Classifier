@@ -15,7 +15,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/GitHubOliverB/Gradient_Boosting_Classifier">
-    <img src="Plots\Visualization\GBT_Classifier_Crosstraining_0_Visualization_Signal_Probabilty_XY_Background_No_Data.png" alt="Logo" width="80" height="80">
+    <img src="GBT_Classifier_Example\Plots\Visualization\GBT_Classifier_Crosstraining_0_Visualization_Signal_Probabilty_XY_Background_No_Data.png" alt="Logo" width="80" height="80">
   </a>
   <h3 align="center">A Gradient-Boosting-Classifier Example In Python</h3>
   <p align="center">
@@ -64,8 +64,8 @@ This project was build using Python 3.7.4 and the following Python libraries ins
 * [NumPy](http://www.numpy.org/)
 * [Pandas](http://pandas.pydata.org)
 * [matplotlib](http://matplotlib.org/)
-* [seaborn] (https://seaborn.pydata.org/)
-* [SciPy] (https://www.scipy.org/)
+* [seaborn](https://seaborn.pydata.org/)
+* [SciPy](https://www.scipy.org/)
 * [scikit-learn](http://scikit-learn.org/stable/)
 
 <!-- GETTING STARTED -->
@@ -145,4 +145,4 @@ Oliver Bey - oliver.bey91@gmail.com
 [license-url]: 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/oliver-bey-2b148918b/
-[Tree-screenshot]: Plots\Decision_Trees\GBT_Classifier_Example_0_Decision_Tree_0.png
+[Tree-screenshot]: GBT_Classifier_Example\Plots\Decision_Trees\GBT_Classifier_Example_0_Decision_Tree_0.png
