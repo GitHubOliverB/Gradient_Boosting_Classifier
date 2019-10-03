@@ -14,16 +14,16 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/GitHubOliverB/Gradient_Boosting_Classifier">
     <img src="Plots\Visualization\GBT_Classifier_Crosstraining_0_Visualization_Signal_Probabilty_XY_Background_No_Data.png" alt="Logo" width="80" height="80">
   </a>
   <h3 align="center">A Gradient-Boosting-Classifier Example In Python</h3>
   <p align="center">
     An awesome semi-automated classifier using Gradient-Boosting with lots of useful and informative plots!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/issues">Request Feature</a>
   </p>
 </p>
 
@@ -47,7 +47,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
+[![Product Name Screen Shot][Tree-screenshot]]
 
 There are many Gradient-Boosting-Classifier templates available on GitHub, however, 
 I didn't find one that needs heavy editing or was automated enough for an easy use.
@@ -94,7 +94,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/issues) for a list of proposed features (and known issues).
 
 
 
@@ -137,12 +137,12 @@ Oliver Bey - oliver.bey91@gmail.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[contributors-shield]: 
+[contributors-url]: 
+[issues-shield]: 
+[issues-url]: 
+[license-shield]: 
+[license-url]: 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/oliver-bey-2b148918b/
 [Tree-screenshot]: Plots\Decision_Trees\GBT_Classifier_Example_0_Decision_Tree_0.png
