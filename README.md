@@ -15,7 +15,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/GitHubOliverB/Gradient_Boosting_Classifier">
-    <img src="GBT_Classifier_Example\Plots\Visualization\GBT_Classifier_Crosstraining_0_Visualization_Signal_Probabilty_XY_Background_No_Data.png" alt="Logo" width="360" height="360">
+    <img src="GBT_Classifier_Example\Plots\Visualization\GBT_Classifier_Crosstraining_0_Visualization_Signal_Probabilty_XY_Background_No_Data.png" alt="Logo" width="504" height="420">
   </a>
   <h3 align="center">A Gradient-Boosting-Classifier Example In Python</h3>
   <p align="center">
