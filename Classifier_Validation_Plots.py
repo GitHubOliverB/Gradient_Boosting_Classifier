@@ -1,5 +1,28 @@
 #!/usr/bin/python
 
+"""
+Summary:
+
+Two functions to evaluate the number of trees using AUC-ROC/PR as score.
+One Function to evalute the training sample size.
+
+Inputs for plot_Ntree_..._curve:									
+classifier								- The classifier you want to train. See GBC_Maker file.
+train, test								- (X_train,y_train), (X_test,y_test) ; Train and Test sample from splitting.
+fig_name								- Name for the png.
+
+Inputs for plot_learning_curve:									
+estimator								- Classifier which was used before.
+title 									- Title for the plot.
+X, y,									- X and y which has to contain more examples than training sample.
+cv=None									- k-fold cross-validation. k=10 is recommended for enough data. 
+n_jobs=1								- Cores to use.
+train_sizes=np.linspace(.1, 1.0, 10)	- Sets 10 equally spaced training samples in terms of size.
+scoring='roc_auc'						- Define a score to use. Default is 'roc_auc'.
+ax=None									- axis for figure
+xlabel=True								- Left this one in if you want to stack plots.
+"""
+
 import os
 import sys
 import importlib
@@ -13,7 +36,9 @@ from sklearn.model_selection import learning_curve
 from sklearn.metrics import roc_curve, auc, roc_auc_score, precision_recall_curve
 from sklearn.externals.six import StringIO  
 
-def plot_Ntree_ROC_curve(classifier, train, test, classifier_name, n_estimators, fig_name):
+from Parameters import *
+
+def plot_Ntree_ROC_curve(classifier, train, test, fig_name, n_estimators=n_estimators):
 	X_test, y_test = test
 	X_train, y_train = train
 	#fig = plt.figure(figsize=(12, 8))
@@ -46,7 +71,7 @@ def plot_Ntree_ROC_curve(classifier, train, test, classifier_name, n_estimators,
 	plt.savefig(fig_name)
 	plt.close()
 	
-def plot_Ntree_PR_curve(classifier, train, test, classifier_name, n_estimators, fig_name):
+def plot_Ntree_PR_curve(classifier, train, test, fig_name, n_estimators=n_estimators):
 	X_test, y_test = test
 	X_train, y_train = train
 	fig = plt.figure(figsize=(12, 8))
@@ -79,7 +104,7 @@ def plot_Ntree_PR_curve(classifier, train, test, classifier_name, n_estimators, 
 	plt.savefig(fig_name)
 	plt.close()
 
-def plot_learning_curve(estimator, title, X, y, cv=None, n_jobs=1, train_sizes=np.linspace(.1, 1.0, 10), scoring=None, ax=None, xlabel=True):
+def plot_learning_curve(estimator, title, X, y, cv=None, n_jobs=1, train_sizes=np.linspace(.1, 1.0, 10), scoring='roc_auc', ax=None, xlabel=True):
 	# Check is ax is defined
 	if ax is None:
 		plt.figure()
@@ -106,7 +131,7 @@ def plot_learning_curve(estimator, title, X, y, cv=None, n_jobs=1, train_sizes=n
 	ax.grid()
 	return plt
 	
-def plot_Ntree_ROC_curves(classifiers, train, test, classifier_name, n_estimators, fig_name):
+def plot_Ntree_ROC_curves(classifiers, train, test, fig_name, n_estimators=n_estimators):
 	X_test, y_test = test
 	X_train, y_train = train
 	#fig = plt.figure(figsize=(12, 8))
@@ -148,7 +173,7 @@ def plot_Ntree_ROC_curves(classifiers, train, test, classifier_name, n_estimator
 	plt.savefig(fig_name)
 	plt.close()
 	
-def plot_Ntree_PR_curves(classifiers, train, test, classifier_name, n_estimators, fig_name):
+def plot_Ntree_PR_curves(classifiers, train, test, fig_name, n_estimators=n_estimators):
 	X_test, y_test = test
 	X_train, y_train = train
 	fig = plt.figure(figsize=(12, 8))

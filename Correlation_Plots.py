@@ -1,5 +1,24 @@
 #!/usr/bin/python
 
+"""
+Summary:
+
+One function assigning a palette to input values.
+Two functions to make correlation plots. 
+You can use either.
+
+As for the inputs for plot_correlation_matrix, you can generate a correlation plot each for signal/background:
+corr = signal_df.drop(['Signal_Indicator', 'Background_Indicator'], 1).corr()
+corr = pd.melt(corr.reset_index(), id_vars='index')
+corr.columns = ['x', 'y', 'value']
+
+x, y 		- x=corr['x'], y=corr['y']
+size		- size=corr['value'].abs()
+color		- color=corr['value']
+title		- Set a title for the plot
+figurename	- Name for the png
+"""
+
 import os
 import sys
 import importlib

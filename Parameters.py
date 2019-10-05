@@ -26,3 +26,7 @@ min_samples_leaf = 0.1
 subsample = 0.8
 n_estimators = 50
 learning_rate = 0.1
+
+# Learning Curve Validation
+n_jobs=4
+cv=10

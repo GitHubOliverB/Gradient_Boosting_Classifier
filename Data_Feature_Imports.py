@@ -6,6 +6,15 @@ Summary:
 Two functions to import dataframes.
 Tests for some common errors and problems in the dataframe.
 
+Inputs module_import:
+Module 		- Filename of the Module. Must be in the same dir. Here either Data_File or Feature_File.
+*Packages	- Lists defined in Module.
+Type		- Either 'Data' or 'Feature'.
+
+Inputs data_import:
+Data_List 	- One of the *Packages used in module_import.
+Type		- Either 'Signal' or 'Background'.
+Features	- Default to Feature_List defined in Feature_File.
 """
 
 import os
@@ -14,6 +23,8 @@ import importlib
 import csv
 import numpy as np
 import pandas as pd
+
+from Feature_File import *
 
 # Module To Import Lists From File To Get Names Of CSV Files
 def module_import(Module, *Packages, Type):
@@ -55,7 +66,7 @@ def module_import(Module, *Packages, Type):
 	return package_list
 	
 # Module To Import specified Dataframes And Select Imported Features
-def data_import(Data_List, Features, Type):
+def data_import(Data_List, Type, Features=Feature_List):
 	Data = []
 	data_path = "Data\\"
 	if Type == 'Signal':

@@ -1,4 +1,12 @@
 #!/usr/bin/python
+
+"""
+Summary:
+
+Here we run all functions. 
+Runs only one classifier and does a crosstraining-validation(k=2).
+"""
+
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Reference for the code of this script
 # Block 0 - Library Imports
@@ -87,11 +95,11 @@ print("\nFinished Defining Features")
 print("---"*42)
 # Import CSV File For Each Defined Data
 print("Loading in Signal Data: " + str(format(len(Signal_List), ',d')) + " File/s\n")
-Signal_Data = data_import(Signal_List, Feature_List, Type = "Signal")
+Signal_Data = data_import(Signal_List, Type = "Signal")
 print("\nFinished Loading Signal Data")
 print("---"*42)
 print("Loading in Background Data: " + str(format(len(Background_List), ',d')) + " File/s\n")
-Background_Data = data_import(Background_List, Feature_List, Type = "Background")
+Background_Data = data_import(Background_List, Type = "Background")
 print("\nFinished Loading Background Data")
 # Make Complete Dataframe
 try:
@@ -115,8 +123,10 @@ print("Start To Create Plots")
 
 # Boxplots
 print("\nBoxplot...")
-#data_df.boxplot(by='Background_Indicator', column=Feature_List, sym='x', return_type='axes', layout=(len(Feature_List), 1))
-#plt.show()
+data_df.boxplot(by='Background_Indicator', column=Feature_List, sym='x', return_type='axes', layout=(len(Feature_List), 1))
+boxplot_figurename = correlation_path+"\Boxplot.png"
+plt.savefig(boxplot_figurename)
+plt.close()
 
 # Correlation Matrix (Second Version below)
 # Signal
@@ -184,9 +194,9 @@ clfs[1].set_params(verbose=False)
 
 print("Plotting Validation For Number Of Trees...")
 Ntree_ROC_Curve_Figname = validation_path + str(classifier_name[0]) + "_Tree_" + str(len(clfs[0].estimators_)) + "_ROC.png"
-plot_Ntree_ROC_curve(clfs[0], (X_train,y_train),(X_test,y_test), "GBT_Classifier", n_estimators, Ntree_ROC_Curve_Figname)
+plot_Ntree_ROC_curve(clfs[0], (X_train,y_train),(X_test,y_test), Ntree_ROC_Curve_Figname)
 Ntree_PR_Curve_Figname = validation_path + str(classifier_name[0]) + "_Tree_" + str(len(clfs[0].estimators_)) + "_PR.png"
-plot_Ntree_PR_curve(clfs[0], (X_train,y_train),(X_test,y_test), "GBT_Classifier", n_estimators, Ntree_PR_Curve_Figname)
+plot_Ntree_PR_curve(clfs[0], (X_train,y_train),(X_test,y_test), Ntree_PR_Curve_Figname)
 
 # Reference For Some Of These Numbers
 # P - condition positive, the number of real positive cases in the data
@@ -213,7 +223,7 @@ plot_Ntree_PR_curve(clfs[0], (X_train,y_train),(X_test,y_test), "GBT_Classifier"
 
 print("Plotting Performance vs. Size Of Training Set...")
 fig, axis = plt.subplots(nrows=1, sharex=True)
-plot_learning_curve(clfs[0], "Learning curves", X_dev, y_dev, scoring='roc_auc', n_jobs=7, cv=10, ax=axis, xlabel=False)
+plot_learning_curve(clfs[0], "Learning curves", X_dev, y_dev, n_jobs=n_jobs, cv=cv, ax=axis)
 axis.legend(loc="best")
 axis.set_xlabel("Training examples")
 fig_name = validation_path + str(classifier_name[0]) + "_Score_Validation" + ".png"

@@ -29,6 +29,7 @@ Features:
 			which compares the two distributes and answers the question if both follow a common distribution.
 			This is the cruical over/undertraining test.
 	iv)		Furthermore we compare 3 values of the ROC-Curve which also acts as an indicator for over/undertraining.
+	v)		Save trained models.
 """
 
 
