@@ -19,6 +19,7 @@ import os
 import sys
 import importlib
 import csv
+import pydotplus
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -170,10 +171,10 @@ print("Setting Classifier and Parameters...")
 print("\nInitializing Crosstraining...")
 clfs=[]    
 print("\nCrosstraining - 0")
-classifier_training(n_estimators, X_train, y_train, X_test, y_test, Feature_List, clfs, 0, GB_clfs[classifier_name[0]], classifier_name[0], model_path, tree_path, training_path, False)
+classifier_training(X_train, y_train, X_test, y_test, clfs, 0, GB_clfs[classifier_name[0]], model_path, tree_path, training_path, True)
 print("---"*42)
 print("Crosstraining - 1")
-classifier_training(n_estimators, X_train, y_train, X_test, y_test, Feature_List, clfs, 1, GB_clfs[classifier_name[0]], classifier_name[0], model_path, tree_path, training_path, False)
+classifier_training(X_train, y_train, X_test, y_test,clfs,  1, GB_clfs[classifier_name[0]], model_path, tree_path, training_path, False)
 print("\nFinished Training...")
 print("---"*42)
 clfs[0].set_params(verbose=False)
@@ -239,11 +240,11 @@ for mname, model in models:
 		Important_Feature_List = Important_Features_1
 	plt.figure(figsize=(12,12))
 	Signal_Proba_Data_Figname = visualization_path + str(mname) + "_Visualization_Signal_Probabilty_XY.png"
-	Signal_Probabilty_XY_Space(mname, model, signal_df, background_df, Sym_Min, Sym_Max, Important_Feature_List, Signal_Proba_Data_Figname)
+	Signal_Probabilty_XY_Space(mname, model, signal_df, background_df, Sym_Min, Sym_Max, Important_Feature_List, True, Signal_Proba_Data_Figname)
 	
 	plt.figure(figsize=(12,12))
 	Signal_Proba_No_Data_Figname = visualization_path + str(mname) + "_Visualization_Signal_Probabilty_XY_Background_No_Data.png"
-	Signal_Probabilty_XY_Space_No_Data(mname, model, Sym_Min, Sym_Max, Important_Feature_List, Signal_Proba_No_Data_Figname)
+	Signal_Probabilty_XY_Space(mname, model, signal_df, background_df, Sym_Min, Sym_Max, Important_Feature_List, False, Signal_Proba_No_Data_Figname)
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Block X.0 - Unsed code

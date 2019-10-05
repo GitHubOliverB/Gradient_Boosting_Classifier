@@ -4,6 +4,23 @@
 # Block 0 - Library Imports
 # Block 1.0 - Define And Create Gaussians
 # Block 2.0 - Write CSV File
+
+"""
+Summary:
+
+This script produces 5 dataframes for my simple example, 1 signal and 4 background dataframe/s. 
+All 5 consist of N_events datapoints, following a 2-dimensional Gaussian distribution with 
+different means and standard deviations. This results in two variables which I simply called X and Y. 
+
+Furthermore, I make a color-coded scatter plot to visualize the datapoints and save it in the current dir.
+Lastly the dataframes are saved in the given path in Block 2.
+
+Since this is just to provide me with an example to work with, you don't need to worry about this file really.
+Just make sure the Data you want to train and test on is divided into a signal and background dataframe and saved 
+in the corresponding directory.
+"""
+
+
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Block 0 - Library Imports
 
@@ -72,6 +89,13 @@ plt.close()
 data_path = "Data\\"
 signal_path = data_path + "Signal\\"
 background_path = data_path + "Background\\"
+
+if not os.path.exists(data_path):
+	os.makedirs(data_path)
+if not os.path.exists(signal_path):
+	os.makedirs(signal_path)
+if not os.path.exists(background_path):
+	os.makedirs(background_path)
 
 # Signal CSV File
 SignalEmptydf.to_csv("Gaussian_Signal.csv", sep=",", encoding='utf-8', index=False)

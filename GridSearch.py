@@ -1,4 +1,11 @@
 #!/usr/bin/python
+
+"""
+Summary:
+
+Standard gridsearch setup. Not optimized. Define the gridsearch parameters in Block 3.
+"""
+
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Reference for the code of this script
 # Block 0 - Library Imports
@@ -6,10 +13,7 @@
 #	Block 0.2 - Paths... 
 # Block 1.0 - Data Imports
 # Block 2.0 - Splitting Data
-# Block 4.0 - Training and Testing
-# Block 5.0 - Validation
-# Block 6.0 - Plotting Probability On Data
-# Block X.0 - Trash code
+# Block 3.0 - Gridsearch
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Block 0 - Library Imports
 

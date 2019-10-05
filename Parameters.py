@@ -1,5 +1,12 @@
 #!/usr/bin/python
 
+"""
+Summary:
+
+Here we declare the parameters for the classifier we want to use.
+Also we have a random_seed which is fixed to reproduce our results.
+"""
+
 import os
 import sys
 
@@ -7,7 +14,7 @@ import sys
 random_seeds = [150, 950, 84512, 4, 3218487]
 
 # Version Name
-classifier_name = ["GBT_Classifier_Example"]
+classifier_name = ["GBT_Classifier_Delete"]
 
 # Splitting Parameters
 reserve_fraction=0.20
@@ -17,5 +24,5 @@ test_fraction = 0.5
 max_depth = 3
 min_samples_leaf = 0.1
 subsample = 0.8
-n_estimators = 500
+n_estimators = 50
 learning_rate = 0.1

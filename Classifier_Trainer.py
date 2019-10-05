@@ -4,6 +4,35 @@
 # Reference for the code of this script
 # Block 0 - Library Imports
 # Block 1.0 - Training Function
+
+"""
+Summary:
+
+This script is the heart of our code. Here the given classifier will be trained by the defined function classifier_training.
+
+Inputs:									
+X_train, y_train, X_test, y_test		- You split your sample into a training and testing sample. X contains all the independent features, while y will be the dependent feature (class).
+clfs									- This is just an empty list which will be filled for each run
+cross_index								- Crosstraining, either 0 or 1 to switch training and testing sample.
+classifier								- The classifier you want to train. See GBC_Maker file
+model_path, tree_path, training_path	- Paths which are defined in main(BDT_Training_Testing).
+dt_safe									- Toggles the saving of all decision trees as png on/off. Default is False(off).
+
+Features:
+1) Trains a classifier on the specified training or testing sample (depending on cross_index).
+2) Can save decision trees as png.
+3) Prints and plots variable importance with standard deviation.
+4) Using the testing(training) sample, it predicts the signal probability and prints/plots:
+	i)  	ROC-Curve and AUC-ROC
+	ii) 	Precision-Recall-Curve and AUC of P-R
+	iii)	Signal Probability for the training and testing sample. Furthermore does a Kolmogorov-Smirnov test
+			which compares the two distributes and answers the question if both follow a common distribution.
+			This is the cruical over/undertraining test.
+	iv)		Furthermore we compare 3 values of the ROC-Curve which also acts as an indicator for over/undertraining.
+"""
+
+
+
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Block 0 - Library Imports
 
@@ -15,6 +44,7 @@ import csv
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import pydotplus
 from scipy import stats
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
@@ -25,13 +55,14 @@ from sklearn.metrics import classification_report,confusion_matrix, roc_curve, a
 from sklearn.externals import joblib
 np.set_printoptions(threshold=sys.maxsize)
 
-
+from Parameters import *
+from Feature_File import *
 
 background_efficiencies = [0.01, 0.10, 0.30]
 Important_Features_0 = []
 Important_Features_1 = []
 
-def classifier_training(n_estimators, X_train, y_train, X_test, y_test, Feature_List, clfs, cross_index, classifier, classifier_name, model_path, tree_path, training_path, dt_safe=False):
+def classifier_training(X_train, y_train, X_test, y_test, clfs, cross_index, classifier, model_path, tree_path, training_path, dt_safe=False):
 	if cross_index == 0:
 		R = classifier.fit(X_train, y_train)
 	elif cross_index == 1:
@@ -40,7 +71,7 @@ def classifier_training(n_estimators, X_train, y_train, X_test, y_test, Feature_
 		print("Wrong cross_index set.")
 		exit()
 	# Save Trained Model
-	Model_File_Name = model_path + str(classifier_name) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_))
+	Model_File_Name = model_path + str(classifier_name[0]) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_))
 	joblib.dump(R, Model_File_Name)
 	clfs.append(classifier)
 	# Save Decision Trees
@@ -54,7 +85,7 @@ def classifier_training(n_estimators, X_train, y_train, X_test, y_test, Feature_
 			# Draw graph
 			graph = pydotplus.graph_from_dot_data(dot_data)  
 			# Save graph
-			graph.write_png(tree_path + str(classifier_name) + "_" + str(cross_index) + "_Decision_Tree_" + str(i) + ".png")
+			graph.write_png(tree_path + str(classifier_name[0]) + "_" + str(cross_index) + "_Decision_Tree_" + str(i) + ".png")
 	else:
 		print("Decision Trees can be saved as a PNG if wanted. Change Input to True.") 
 	classifier_Importance = classifier.feature_importances_
@@ -81,8 +112,8 @@ def classifier_training(n_estimators, X_train, y_train, X_test, y_test, Feature_
 	plt.xticks(range(len(classifier_Feature_Indices)), classifier_Feature_Indices)
 	plt.xlim([-1, len(Feature_List)])
 	ax.set_ylabel('Variable Importance')
-	plt.title(str(classifier_name) + " Crosstraining - " + str(cross_index))
-	fig_name = training_path + str(classifier_name) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_)) + "_Feature_Ranking.png"
+	plt.title(str(classifier_name[0]) + " Crosstraining - " + str(cross_index))
+	fig_name = training_path + str(classifier_name[0]) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_)) + "_Feature_Ranking.png"
 	plt.savefig(fig_name)
 	plt.close()
 	# Testing on the other data set
@@ -138,7 +169,7 @@ def classifier_training(n_estimators, X_train, y_train, X_test, y_test, Feature_
 	plt.title("Receiver Operating Characteristic - Crosstraining - " + str(cross_index))
 	plt.legend(loc="lower left")
 	plt.grid()
-	fig_name = training_path  + str(classifier_name) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_)) + "_ROC_Curve.png"
+	fig_name = training_path  + str(classifier_name[0]) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_)) + "_ROC_Curve.png"
 	plt.savefig(fig_name)
 	plt.close()
 	# Precision-Recall-Curve and AUC of P-R
@@ -162,7 +193,7 @@ def classifier_training(n_estimators, X_train, y_train, X_test, y_test, Feature_
 	plt.title("Precision-Recall-Curve Crosstraining  - " + str(cross_index))
 	plt.legend(loc="lower left")
 	plt.grid()
-	fig_name = training_path  + str(classifier_name) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_)) + "_PR_Curve.png"
+	fig_name = training_path  + str(classifier_name[0]) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_)) + "_PR_Curve.png"
 	plt.savefig(fig_name)
 	plt.close()
 	# OVER AND UNVERTRAINING TESTS
@@ -226,6 +257,6 @@ def classifier_training(n_estimators, X_train, y_train, X_test, y_test, Feature_
 	plt.ylabel("Arbitrary units")
 	plt.plot([], [], ' ', label='KS p-value S(B): ' + str(round(Signal_KS[1],3)) + ' (' + str(round(Background_KS[1],3)) + ')')
 	plt.legend(loc='best')
-	fig_name = training_path + str(classifier_name) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_)) + "_BDT_Output_Prob.png"
+	fig_name = training_path + str(classifier_name[0]) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_)) + "_BDT_Output_Prob.png"
 	plt.savefig(fig_name)
 	plt.close()

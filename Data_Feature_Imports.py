@@ -1,5 +1,13 @@
 #!/usr/bin/python
 
+"""
+Summary:
+
+Two functions to import dataframes.
+Tests for some common errors and problems in the dataframe.
+
+"""
+
 import os
 import sys
 import importlib
@@ -45,6 +53,7 @@ def module_import(Module, *Packages, Type):
 				exit()			
 		package_list.append(mypackage)
 	return package_list
+	
 # Module To Import specified Dataframes And Select Imported Features
 def data_import(Data_List, Features, Type):
 	Data = []

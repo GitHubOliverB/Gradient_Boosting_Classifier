@@ -1,5 +1,13 @@
 #!/usr/bin/python
 
+"""
+Summary:
+
+Small function which just checks if the inputs for the classifier are valid.
+Generates a GradientBoostingClassifier and stores it in a directory with a name via input classifier_name.
+As for the inputs of the classifier, I set some default values.
+"""
+
 # Basic Python Libs
 import os
 import sys
@@ -12,7 +20,7 @@ from sklearn.ensemble import GradientBoostingClassifier, AdaBoostClassifier
 np.set_printoptions(threshold=sys.maxsize)
 
 GB_clfs = {}
-def GB_classifier_maker(classifier_name, max_depth=3, min_samples_leaf=0.05, subsample=1, n_estimators=50, learning_rate=0.1):
+def GB_classifier_maker(classifier_name, max_depth=3, min_samples_leaf=0.05, subsample=0.9, n_estimators=100, learning_rate=0.1):
 	if max_depth <= 0:
 		print("Error, Max_Depth is negative or zero. Needs to be an integer greater than 0")
 		exit()
