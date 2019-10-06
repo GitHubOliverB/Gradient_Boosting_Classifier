@@ -33,10 +33,11 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
+* [Features](#features)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Usage](#usage)
+  * [Preparation](#preparation)
+  * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -70,6 +71,21 @@ This project was build using Python 3.7.4 and the following Python libraries ins
 * [scikit-learn](http://scikit-learn.org/stable/)
 * [pydotplus](https://pypi.org/project/pydotplus/)
 
+<!-- FEATURES -->
+## Features
+
+* Classifying your data as signal/background using Gradient-Boosting-Decision-Trees.
+* Grid Search for the average (cv=k) best performing hyperparameters.
+* Easy access to hyperparameters and other settings.
+* Separated correlation-matrix & box-plots for signal/background.
+* Option to save all Decision-Trees figures.
+* Signal-Probability-Plot for signal/background class and training & testing with a Kolmogorov-Smirnov test to check for under/overtraining.
+* Feature-Importance(+STD), ROC-Curve and Precision-Recall-Curve plots.
+* 1 - AUC-ROC/P-R vs. Number Of Trees plots.
+* AUC-ROC vs. Training Sample Size for training & testing plot
+* (Neat 2-dimensional visualization for two feature problems)
+* Crosstraining (k=2).
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -83,18 +99,26 @@ To get a local copy up and running follow these simple example steps.
 ```sh
 git clone https://github.com/GitHubOliverB/Gradient_Boosting_Classifier.git
 ```
-
-<!-- USAGE EXAMPLES -->
-## Usage
+### Preparation
 
 Before you can use this template, you need to setup your data and adjust your parameters. So let's start with the setup:
 
-I) The data you want to use for your training and testing needs to be formatted in at least two .csv files.
-You split your data according to the signal-class(es) (positive events, the one you are interested in) and the background-class(es).
-Furhtermore you don't need to include a one hot encoding column for your signal/background, as this will be added later on.
-After doing so, you put the .csv files in the corresponding subdirectory in [Data dir](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/tree/master/Data). 
+The data you want to use for your training and testing needs to be formatted in at least two .csv files.
+You'll need a seperated file for all classes that you want to use. Split your data according to the signal-class 
+(positive events, the one you are interested in) and the background-class(es). Furhtermore you don't need to include 
+a label/onehotencoding column for your signal/background, as this will be added later on. Just the independent features are enough!
 
-All files you put in the Data/Signal and Data/Background dir will be added and are assumed to be csv files.
+Temporarily, two columns ('Signal_Indicator', 'Background_Indicator') will be added to the dataframes which is generated from the .csv files.
+The values (1,0) are assigned to each dataset from the [Signal directory](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/tree/master/Data/Signal).
+The values (0,i) are assigned to the i-th dataset from the [Background directory](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/tree/master/Data/Background).
+
+At the moment all background classes will simply be grouped as one background. 
+
+## Usage
+
+I) Put the .csv files in the corresponding subdirectory in [Data dir](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/tree/master/Data). 
+
+All files you put in the Data/Signal and Data/Background dir will be added and used and are assumed to be csv files.
 
 Skip:
 

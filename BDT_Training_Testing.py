@@ -236,7 +236,6 @@ print("---"*42)
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Block 6.0 - Plotting Probability On Data
 
-print("\nFinish things up here with some nice plots for you to look at :).")
 models = [('GBT_Classifier_Crosstraining_0', clfs[0]),
 		  ('GBT_Classifier_Crosstraining_1', clfs[1])]
 if len(Important_Features_0) == 2:
