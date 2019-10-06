@@ -23,6 +23,7 @@ import importlib
 import csv
 import numpy as np
 import pandas as pd
+import pandas_profiling
 
 from Feature_File import *
 
@@ -77,7 +78,7 @@ def data_import(Data_List, Type, Features=Feature_List):
 		print("Put either Signal_List or Background_List as Input.")
 		exit()	
 	for i, j in enumerate(Data_List):
-		Data_Import = pd.read_csv(path+str(j)+".csv", delimiter=',')
+		Data_Import = pd.read_csv(path+str(j), delimiter=',')
 		if len(Data_Import.index) == 0:
 			print("Error, the dataframe " + str(j) + " seems to be empty.")
 			exit()

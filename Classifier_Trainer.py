@@ -53,7 +53,7 @@ from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn.ensemble import GradientBoostingClassifier, AdaBoostClassifier
 from sklearn.model_selection import train_test_split, learning_curve
 from sklearn.metrics import classification_report,confusion_matrix, roc_curve, auc, roc_auc_score, precision_recall_curve
-from sklearn.externals import joblib
+import joblib
 np.set_printoptions(threshold=sys.maxsize)
 
 from Parameters import *
@@ -72,6 +72,7 @@ def classifier_training(X_train, y_train, X_test, y_test, clfs, cross_index, cla
 		print("Wrong cross_index set.")
 		exit()
 	# Save Trained Model
+	print("Safing trained model...")
 	Model_File_Name = model_path + str(classifier_name[0]) + "_Crosstraining_" + str(cross_index) + "_Tree_" + str(len(classifier.estimators_))
 	joblib.dump(R, Model_File_Name)
 	clfs.append(classifier)

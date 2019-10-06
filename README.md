@@ -7,6 +7,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -67,6 +68,7 @@ This project was build using Python 3.7.4 and the following Python libraries ins
 * [seaborn](https://seaborn.pydata.org/)
 * [SciPy](https://www.scipy.org/)
 * [scikit-learn](http://scikit-learn.org/stable/)
+* [pydotplus](https://pypi.org/project/pydotplus/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -76,26 +78,50 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
-1. Install Python and all libraries needed
-2. Clone the repo
+1. Install Python and all libraries needed.
+2. Clone the repo.
 ```sh
-git clone https:://github.com/your_username_/Project-Name.git
+git clone https://github.com/GitHubOliverB/Gradient_Boosting_Classifier.git
 ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Before you can use this template, you need to setup your data and adjust your parameters. So let's start with the setup:
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+I) The data you want to use for your training and testing needs to be formatted in at least two .csv files.
+You split your data according to the signal-class(es) (positive events, the one you are interested in) and the background-class(es).
+Furhtermore you don't need to include a one hot encoding column for your signal/background, as this will be added later on.
+After doing so, you put the .csv files in the corresponding subdirectory in [Data dir](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/tree/master/Data). 
+
+All files you put in the Data/Signal and Data/Background dir will be added and are assumed to be csv files.
+
+Skip:
+
+I generated my own data by running the [Gaussian_Generator script](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/blob/master/Gaussian_Generator.py). You can take a look at it and play around with it if you want.
+I used 1 signal and 4 backgrounds, all following 2-dimensional gaussian distributions:
+![alt text](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/blob/master/Gaussian_Plot.png)
 
 
+II) In the [Feature_File](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/blob/master/Feature_File.py) is a list defined as Feature_List. Put all features (names as strings) you want to use for the classification there.
+
+Optional: Go into [Grid Search](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/blob/master/GridSearch.py) down to Block 3 and adjust the search parameters to your liking.
+It will return the best set of hyperparameters for your classifier (from the ones you specified). 
+
+WARNING: This can take long, so use with some thought behind it!
+
+III) Head over to the [Parameters File](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/blob/master/Parameters.py) to adjust the hyperparameters of your classifier, the name of the classifier(and dir) etc.
+
+IV) Run the [Training](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/blob/master/BDT_Training_Testing.py).
+
+Optional: In the training script, Block 4.0, you can set the last argument of classifier_training to 'True' is you are interested in the Decision Trees.
+
+Here is an example for the [Output](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/blob/master/Output_Example.txt).
 
 <!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/issues) for a list of proposed features (and known issues).
-
 
 
 <!-- CONTRIBUTING -->
@@ -137,11 +163,13 @@ Oliver Bey - oliver.bey91@gmail.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: 
-[contributors-url]: 
-[issues-shield]: 
-[issues-url]: 
-[license-shield]: 
-[license-url]: 
+[contributors-shield]: https://img.shields.io/github/contributors/GitHubOliverB/Gradient_Boosting_Classifier.svg?style=flat-square
+[contributors-url]: https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/GitHubOliverB/Gradient_Boosting_Classifier.svg?style=flat-square
+[forks-url]: https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/network/members
+[issues-shield]: https://img.shields.io/github/issues/GitHubOliverB/Gradient_Boosting_Classifier.svg?style=flat-square
+[issues-url]: https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/issues
+[license-shield]: https://img.shields.io/github/license/GitHubOliverB/Gradient_Boosting_Classifier.svg?style=flat-square
+[license-url]: https://github.com/GitHubOliverB/Gradient_Boosting_Classifier/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/oliver-bey-2b148918b/
